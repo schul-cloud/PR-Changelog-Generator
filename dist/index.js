@@ -5027,11 +5027,7 @@ const main = async () => {
 	console.log("tagged released changes");
 };
 
-try {
-	main();
-} catch (error) {
-	core.setFailed(error.message);
-}
+main().catch((error) => core.setFailed(error.message));
 
 
 /***/ }),
