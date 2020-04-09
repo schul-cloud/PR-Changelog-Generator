@@ -63,15 +63,17 @@ const main = async () => {
 	const release = payload.tag_name || "v0.0.0-test";
 	const releaseBranch = payload.target_commitish || "master";
 	console.log(release, releaseBranch);
-	const changes = await loadChanges({
+	const releaseQuery = {
 		$or: [{ release: null }, { release: release }],
 		merged_to: releaseBranch,
-	});
+	};
+
+	const changes = await loadChanges(releaseQuery);
 	console.log(JSON.stringify(changes, undefined, 2));
 	const changelog = generateChangelog(release, changes);
 	console.log(JSON.stringify(changelog, undefined, 2));
 	core.setOutput("changelog", changelog);
-	await tagReleasedChanges();
+	await tagReleasedChanges(release, releaseQuery);
 	console.log("tagged released changes");
 };
 
