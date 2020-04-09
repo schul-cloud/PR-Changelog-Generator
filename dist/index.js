@@ -4998,13 +4998,16 @@ const tagReleasedChanges = async (release, query) => {
 };
 
 const generateChangelog = (release, changes) => {
-	let changelog = [`## ${release}\n\n`];
+	let changelog = [`## ${release}\n`];
 	changelogSections.forEach((section) => {
-		changelog.push(`### ${section}\n\n`);
 		const sectionChanges = changes.reduce(
 			(merge, change) => merge.concat(change.changes[section] || []),
 			[]
 		);
+		if (sectionChanges.length === 0) {
+			return changelog;
+		}
+		changelog.push(`### ${section}\n`);
 		changelog = changelog.concat(sectionChanges);
 		changelog.push("");
 	});
