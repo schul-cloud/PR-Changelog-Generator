@@ -65,7 +65,7 @@ const main = async () => {
 		merged_to: releaseBranch,
 	});
 	console.log(JSON.stringify(changes, undefined, 2));
-	const changelog = generateChangelog(changes);
+	const changelog = generateChangelog(release, changes);
 	console.log(JSON.stringify(changelog, undefined, 2));
 	core.setOutput("changelog", changelog);
 	await tagReleasedChanges();
