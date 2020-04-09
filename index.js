@@ -29,12 +29,12 @@ const loadChanges = async (query) => {
 	return changes;
 };
 
-const tagReleasedChanges = (release, query) => {
+const tagReleasedChanges = async (release, query) => {
 	try {
 		await client.connect();
 		const db = await client.db(mongoDb);
 		const collection = await db.collection(mongoCollection);
-		await collection.updateMany(query, { $set: { release : release } });
+		await collection.updateMany(query, { $set: { release: release } });
 	} catch (e) {
 		console.error(e);
 	} finally {
@@ -59,17 +59,17 @@ const generateChangelog = (release, changes) => {
 const main = async () => {
 	const release = payload.tag_name;
 	const releaseBranch = payload.target_commitish;
-	console.log(release, releaseBranch)
+	console.log(release, releaseBranch);
 	const changes = await loadChanges({
 		$or: [{ release: null }, { release: release }],
 		merged_to: releaseBranch,
 	});
 	console.log(JSON.stringify(changes, undefined, 2));
-	const changelog = generateChangelog(changes)
+	const changelog = generateChangelog(changes);
 	console.log(JSON.stringify(changelog, undefined, 2));
-	core.setOutput('changelog', changelog);
+	core.setOutput("changelog", changelog);
 	await tagReleasedChanges();
-	console.log("tagged released changes")
+	console.log("tagged released changes");
 };
 
 try {
