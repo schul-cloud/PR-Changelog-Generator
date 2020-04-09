@@ -1,6 +1,9 @@
 name: Test
 
 on:
+  push:
+    branch:
+      - master
   release:
     # only "published" should be used in production
     # types: [published]

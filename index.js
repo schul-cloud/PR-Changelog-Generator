@@ -57,8 +57,8 @@ const generateChangelog = (release, changes) => {
 };
 
 const main = async () => {
-	const release = payload.tag_name;
-	const releaseBranch = payload.target_commitish;
+	const release = payload.tag_name || "v0.0.0-test";
+	const releaseBranch = payload.target_commitish || "master";
 	console.log(release, releaseBranch);
 	const changes = await loadChanges({
 		$or: [{ release: null }, { release: release }],
