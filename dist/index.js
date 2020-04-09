@@ -4969,14 +4969,11 @@ const payload = github.context.payload;
 const loadChanges = async (query) => {
 	let changes = [];
 	try {
-		await client.connect();
 		const db = await client.db(mongoDb);
 		const collection = await db.collection(mongoCollection);
 		changes = await collection.find(query).toArray();
 	} catch (e) {
 		console.error(e);
-	} finally {
-		await client.close();
 	}
 	changes = changes.sort((a, b) =>
 		("" + a.merged_at).localeCompare(b.merged_at)
@@ -4986,14 +4983,11 @@ const loadChanges = async (query) => {
 
 const tagReleasedChanges = async (release, query) => {
 	try {
-		await client.connect();
 		const db = await client.db(mongoDb);
 		const collection = await db.collection(mongoCollection);
 		await collection.updateMany(query, { $set: { release: release } });
 	} catch (e) {
 		console.error(e);
-	} finally {
-		await client.close();
 	}
 };
 
@@ -5015,6 +5009,7 @@ const generateChangelog = (release, changes) => {
 };
 
 const main = async () => {
+	await client.connect();
 	const release = payload.tag_name || "v0.0.0-test";
 	const releaseBranch = payload.target_commitish || "master";
 	console.log(release, releaseBranch);
@@ -5024,15 +5019,18 @@ const main = async () => {
 	};
 
 	const changes = await loadChanges(releaseQuery);
-	console.log(JSON.stringify(changes, undefined, 2));
 	const changelog = generateChangelog(release, changes);
-	console.log(JSON.stringify(changelog, undefined, 2));
+	console.log(changelog);
 	core.setOutput("changelog", changelog);
 	await tagReleasedChanges(release, releaseQuery);
 	console.log("tagged released changes");
 };
 
-main().catch((error) => core.setFailed(error.message));
+main()
+	.catch((error) => core.setFailed(error.message))
+	.finally(() => {
+		client.close();
+	});
 
 
 /***/ }),
