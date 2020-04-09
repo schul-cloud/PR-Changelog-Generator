@@ -1,5 +1,7 @@
 # PR Changelog Generator - GitHub Action
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/schul-cloud/PR-Changelog-Generator.svg)](https://greenkeeper.io/)
+
 A GitHub Action to generate a changelog based on MongoDB date created by the PR Changelog Sender.
 
 ## Inputs
