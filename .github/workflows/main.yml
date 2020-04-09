@@ -1,0 +1,21 @@
+name: Test
+
+on:
+  release:
+    # only "published" should be used in production
+    # types: [published]
+    types: [published, created, edited]
+
+jobs:
+  generate-changelog:
+    runs-on: ubuntu-latest
+    name: Generate Changelog
+    steps:
+      - uses: actions/checkout@v1
+      - name: generate changelog
+        uses: ./
+        with:
+          mongo-uri: ${{ secrets.MONGO_URI }}
+          mongo-db: "pr-changelog"
+          mongo-collection: "pr-changes"
+          changelog-sections: '["Added", "Changed", "Deprecated", "Removed", "Fixed", "Security", "Uncategorized"]'

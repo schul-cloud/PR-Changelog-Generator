@@ -1,0 +1,21 @@
+name: "PR Changelog Generator"
+description: "A GitHub Action to push changelog sections of Pull Requests into a MongoDB"
+branding:
+  icon: "edit"
+  color: "gray-dark"
+inputs:
+  mongo-uri:
+    description: "mongodb+srv://<username>:<password>@<your-cluster-url>/test?retryWrites=true&w=majority"
+    required: true
+  mongo-db:
+    description: "mongo database name"
+    default: "pr-changelog"
+  mongo-collection:
+    description: "mongo collection name"
+    default: "pr-changes"
+  changelog-sections:
+    description: "sections to include in the changelog"
+    default: '["Added", "Changed", "Deprecated", "Removed", "Fixed", "Security"]'
+runs:
+  using: "node12"
+  main: "dist/index.js"
