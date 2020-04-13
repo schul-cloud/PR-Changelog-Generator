@@ -1,0 +1,18 @@
+name: Release
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  send-changelog:
+    runs-on: ubuntu-latest
+    name: "Upload Changelog"
+    steps:
+      - name: Upload PR Changelog
+        if: github.event.payload.pull_request.merged
+        uses: schul-cloud/PR-Changelog-Sender@master
+        with:
+          mongo-uri: ${{ secrets.MONGO_URI }}
+          mongo-db: "pr-changelog"
+          mongo-collection: "pr-changes"
+          changelog-sections: '["Added", "Changed", "Deprecated", "Removed", "Fixed", "Security", "Uncategorized"]'

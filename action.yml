@@ -1,9 +1,12 @@
 name: "PR Changelog Generator"
-description: "A GitHub Action to push changelog sections of Pull Requests into a MongoDB"
+description: "A GitHub Action to generate a Changelog from schul-cloud/pr-changelog-sender mongodb entries"
 branding:
   icon: "edit"
   color: "gray-dark"
 inputs:
+  gh-token:
+    description: "Token is required to get the list of associated PRs for the current release"
+    required: true
   mongo-uri:
     description: "mongodb+srv://<username>:<password>@<your-cluster-url>/test?retryWrites=true&w=majority"
     required: true

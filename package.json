@@ -1,7 +1,7 @@
 {
 	"name": "pr-changelog-generator",
-	"version": "0.0.1",
-	"description": "A GitHub Action to push changelog sections of Pull Requests into a MongoDB",
+	"version": "0.0.2",
+	"description": "A GitHub Action to generate a Changelog from schul-cloud/pr-changelog-sender mongodb entries",
 	"main": "index.js",
 	"scripts": {
 		"build": "ncc build index.js -o dist"
@@ -10,11 +10,12 @@
 	"dependencies": {
 		"@actions/core": "^1.2.3",
 		"@actions/github": "^2.1.1",
+		"compare-versions": "^3.6.0",
 		"mongodb": "^3.5.5"
 	},
 	"devDependencies": {
 		"@zeit/ncc": "^0.22.1",
-		"husky": "^4.2.3"
+		"husky": "^4.2.4"
 	},
 	"husky": {
 		"hooks": {
