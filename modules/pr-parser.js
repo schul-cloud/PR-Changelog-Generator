@@ -1,5 +1,7 @@
 const core = require("@actions/core");
 
+const { changelog_sections } = require("./context");
+
 const extractChanges = (mdPullBody) => {
 	core.debug(`extract changes from pr body... "${JSON.stringify(mdPullBody)}"`);
 	const rows = mdPullBody
@@ -25,7 +27,7 @@ const extractChanges = (mdPullBody) => {
 		}
 
 		const newSection = row.match(
-			new RegExp(`^### (${changelogSections.join("|")})$`)
+			new RegExp(`^### (${changelog_sections.join("|")})$`)
 		);
 		if (newSection) {
 			currentSection = newSection[1];

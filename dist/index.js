@@ -25561,6 +25561,8 @@ module.exports.shellSync = (cmd, opts) => handleShell(module.exports.sync, cmd, 
 
 const core = __webpack_require__(470);
 
+const { changelog_sections } = __webpack_require__(656);
+
 const extractChanges = (mdPullBody) => {
 	core.debug(`extract changes from pr body... "${JSON.stringify(mdPullBody)}"`);
 	const rows = mdPullBody
@@ -25586,7 +25588,7 @@ const extractChanges = (mdPullBody) => {
 		}
 
 		const newSection = row.match(
-			new RegExp(`^### (${changelogSections.join("|")})$`)
+			new RegExp(`^### (${changelog_sections.join("|")})$`)
 		);
 		if (newSection) {
 			currentSection = newSection[1];
