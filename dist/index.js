@@ -388,14 +388,6 @@ module.exports._enoent = enoent;
 
 /***/ }),
 
-/***/ 26:
-/***/ (function(module) {
-
-module.exports = eval("require")("./repo-context");
-
-
-/***/ }),
-
 /***/ 34:
 /***/ (function(module) {
 
@@ -8963,7 +8955,7 @@ module.exports = (promise, onFinally) => {
 const core = __webpack_require__(470);
 
 const octokit = __webpack_require__(930);
-const { repo, owner } = __webpack_require__(26);
+const { repo, owner } = __webpack_require__(656);
 
 const pullNumberRegex = new RegExp("^Merge pull request #([0-9]+)");
 
