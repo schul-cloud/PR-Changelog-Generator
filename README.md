@@ -18,6 +18,21 @@ A GitHub Action to generate a changelog based on a Changelog Section in Pull Req
 
 The sections by that changes should be grouped for the release.
 
+## Outputs
+
+### release_tag
+
+The tag of the current release
+
+### pull_requests
+
+A JSON.stringified list of all PRs that are in the current release
+
+### changelog
+
+The markdown formatted changelog.
+You can use `echo -e '${{ steps.changelog.outputs.changelog }}' > "CHANGELOG/${{ steps.changelog.outputs.release_tag }}.md"` to write it in a file.
+
 ## Example Usage
 
 ```yaml
