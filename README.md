@@ -4,6 +4,14 @@ A GitHub Action to generate a changelog based on MongoDB date created by the PR 
 
 ## Inputs
 
+### `token`
+
+**Required:** true
+
+**Description:** A Personal Access Token to access the repo. You can also use the `GITHUB_TOKEN` provided by the execution context. This Token needs read access to the current repository.
+
+**Example:** `${{ secrets.GITHUB_TOKEN }}`
+
 ### `mongo-uri`
 
 **Required:** true
