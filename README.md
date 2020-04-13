@@ -2,6 +2,10 @@
 
 A GitHub Action to generate a changelog based on MongoDB date created by the PR Changelog Sender.
 
+If you use this action, you also need to setup the [schul-cloud/PR-Changelog-Sender](https://github.com/schul-cloud/PR-Changelog-Sender) action. Otherwise there will be nothing to generate the changelogs from.
+
+In a future release, it is planned to remove this dependency by fetching and parsing the PRs directly on Changelog creation.
+
 ## Inputs
 
 ### `mongo-uri`
