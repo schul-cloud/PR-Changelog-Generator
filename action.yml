@@ -4,7 +4,7 @@ branding:
   icon: "edit"
   color: "gray-dark"
 inputs:
-  gh-token:
+  token:
     description: "Token is required to get the list of associated PRs for the current release"
     required: true
   mongo-uri:

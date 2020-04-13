@@ -8,6 +8,14 @@ In a future release, it is planned to remove this dependency by fetching and par
 
 ## Inputs
 
+### `token`
+
+**Required:** true
+
+**Description:** A Personal Access Token to access the repo. You can also use the `GITHUB_TOKEN` provided by the execution context. This Token needs read access to the current repository.
+
+**Example:** `${{ secrets.GITHUB_TOKEN }}`
+
 ### `mongo-uri`
 
 **Required:** true

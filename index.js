@@ -20,9 +20,9 @@ const mongoDb = core.getInput("mongo-db");
 const mongoCollection = core.getInput("mongo-collection");
 const client = new MongoClient(mongoUri, { useUnifiedTopology: true });
 
-const accessToken = core.getInput("gh-token");
+const accessToken = core.getInput("token");
 if (!accessToken) {
-	throw new Error('"gh-token" input is missing');
+	throw new Error('"token" input is missing');
 }
 const octokit = new github.GitHub(accessToken);
 

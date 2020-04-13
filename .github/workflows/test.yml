@@ -18,7 +18,7 @@ jobs:
       - name: generate changelog
         uses: ./
         with:
-          gh-token: ${{ secrets.SC_BOT_GITHUB_TOKEN }}
+          token: ${{ secrets.SC_BOT_GITHUB_TOKEN }}
           mongo-uri: ${{ secrets.MONGO_URI }}
           mongo-db: "pr-changelog"
           mongo-collection: "pr-changes"
