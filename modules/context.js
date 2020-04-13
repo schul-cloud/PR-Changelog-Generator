@@ -28,9 +28,7 @@ if (!token) {
 
 module.exports = {
 	owner,
-	owner_id,
 	repo,
-	repo_id,
 	release_tag_name,
 	changelog_sections,
 	token,
