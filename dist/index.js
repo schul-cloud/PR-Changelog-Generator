@@ -8747,7 +8747,7 @@ const repo_id = payload.repository.id;
 const release_tag_name = payload.release.tag_name;
 
 // input data
-const changelog_sections = core.getInput("changelog-sections");
+const changelog_sections = JSON.parse(core.getInput("changelog-sections"));
 const token = core.getInput("token");
 
 if (!token) {
