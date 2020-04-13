@@ -22,10 +22,7 @@ jobs:
           token: ${{ secrets.SC_BOT_GITHUB_TOKEN }}
           ref: "master"
       - name: save changelog
-        uses: finnp/create-file-action@master
-        env:
-          FILE_NAME: "CHANGELOG/${{ steps.changelog.outputs.release_tag }}.md"
-          FILE_DATA: ${{ steps.changelog.outputs.changelog }}
+        runs: echo -e '${{ steps.changelog.outputs.changelog }}' > "CHANGELOG/${{ steps.changelog.outputs.release_tag }}.md"
       - name: commit changelog
         uses: stefanzweifel/git-auto-commit-action@v4.1.1
         with:
