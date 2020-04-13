@@ -1,7 +1,7 @@
 const core = require("@actions/core");
 
 const octokit = require("./octokit");
-const { repo, owner } = require("./repo-context");
+const { repo, owner } = require("./context");
 
 const pullNumberRegex = new RegExp("^Merge pull request #([0-9]+)");
 
