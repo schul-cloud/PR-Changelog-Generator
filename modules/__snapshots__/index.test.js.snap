@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`action can be executed 1`] = `
+Array [
+  Array [
+    "pull_requests",
+    Array [
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+    ],
+  ],
+  Array [
+    "changelog",
+    "## v0.0.4
+
+### Added
+
+- pull request templated for easier and faster PR creation.
+- documentation that you also need to setup the sender repository
+- documentation of \`token\` input
+- new output \`pull_requests\` added, which holds a list of pull request numbers that where included in the release
+
+### Changed
+
+- renamed \`gh-token\` input to \`token\`
+
+### Removed
+
+- MongoDB is no longer required. Therefore the following inputs where removed
+  - \`mongo-uri\`
+  - \`mongo-db\`
+  - \`mongo-collection\`
+
+### Fixed
+
+- action was not starting because of a wrong require name in \`modules\\\\get-pull_request-merges-between-commits.js\`. Changes \`./repo-context\` to \`./context\`
+- an import was missing
+",
+  ],
+]
+`;

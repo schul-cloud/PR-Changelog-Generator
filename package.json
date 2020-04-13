@@ -4,7 +4,8 @@
 	"description": "A GitHub Action to generate a changelog based on a Changelog Section in Pull Requests.",
 	"main": "index.js",
 	"scripts": {
-		"build": "ncc build index.js -o dist"
+		"build": "ncc build index.js -o dist",
+		"test": "jest"
 	},
 	"author": "Adrian Jost",
 	"dependencies": {
@@ -14,7 +15,10 @@
 	},
 	"devDependencies": {
 		"@zeit/ncc": "^0.22.1",
-		"husky": "^4.2.4"
+		"husky": "^4.2.4",
+		"jest": "^25.3.0",
+		"js-yaml": "^3.13.1",
+		"nock": "^12.0.3"
 	},
 	"husky": {
 		"hooks": {
