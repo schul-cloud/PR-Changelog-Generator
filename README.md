@@ -35,6 +35,27 @@ You can use `echo -e '${{ steps.changelog.outputs.changelog }}' > "CHANGELOG/${{
 
 ## Example Usage
 
+### PR Format
+
+Each PR must follow the following Schema
+
+```md
+# My PR
+
+you can add whatever content you want before the changelog section.
+But the Changelog Section must begin with a Level 2 Heading with the exact name `Changelog`.
+So `## Changelog` will define the beginning of the changelog section.
+
+## Changelog
+
+## Next Section
+
+If there should be content after the Changelog section, it must have a heading of Level 1 or 2.
+Otherwise the content will be added to the `Uncategorized` section of the changelog.
+```
+
+### Action
+
 ```yaml
 name: Release
 on:
