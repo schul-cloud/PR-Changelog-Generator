@@ -19,7 +19,7 @@ const main = async () => {
 	core.info(`Changelog generated`);
 
 	core.info(changelog);
-	core.setOutput("pull_requests", prs);
+	core.setOutput("pull_requests", JSON.stringify(prs));
 	core.setOutput("changelog", changelog);
 };
 
