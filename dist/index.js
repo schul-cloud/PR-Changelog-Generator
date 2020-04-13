@@ -524,7 +524,7 @@ module.exports = getPrBody;
 /***/ }),
 
 /***/ 104:
-/***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
+/***/ (function(module, __unusedexports, __webpack_require__) {
 
 const core = __webpack_require__(470);
 
@@ -551,11 +551,9 @@ const main = async () => {
 	core.setOutput("changelog", changelog);
 };
 
-try {
-	main();
-} catch (error) {
-	core.setFailed(error.message);
-}
+main();
+
+module.exports = main;
 
 
 /***/ }),
@@ -7542,6 +7540,7 @@ const getPullChanges = async (pull_numbers) => {
 	core.debug("extract changes from pull request bodies...");
 	const changes = pullBodys.map(prParser);
 	core.debug("all changes from pull request bodies extracted.");
+	core.debug(JSON.stringify(changes, undefined, 2));
 	return changes;
 };
 
@@ -8558,7 +8557,7 @@ const generateChangelog = (release, changes) => {
 	let changelog = [`## ${release}\n`];
 	changelog_sections.forEach((section) => {
 		const sectionChanges = changes.reduce(
-			(merge, change) => merge.concat(change.changes[section] || []),
+			(merge, change) => merge.concat(change[section] || []),
 			[]
 		);
 		if (sectionChanges.length === 0) {
@@ -8736,14 +8735,19 @@ const github = __webpack_require__(469);
 const payload = github.context.payload;
 
 // TODO: verify existence of variables
+if (!payload.organization || !payload.organization.login) {
+	throw new Error("payload.organization.login is not defined");
+}
+if (!payload.repository || !payload.repository.name) {
+	throw new Error("payload.repository.name is not defined");
+}
+if (!payload.tag_name || !payload.release.tag_name) {
+	throw new Error("payload.release.tag_name is not defined");
+}
 
 // payload data
 const owner = payload.organization.login;
-const owner_id = payload.organization.id;
-
 const repo = payload.repository.name;
-const repo_id = payload.repository.id;
-
 const release_tag_name = payload.release.tag_name;
 
 // input data

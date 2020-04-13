@@ -4,7 +4,7 @@ const generateChangelog = (release, changes) => {
 	let changelog = [`## ${release}\n`];
 	changelog_sections.forEach((section) => {
 		const sectionChanges = changes.reduce(
-			(merge, change) => merge.concat(change.changes[section] || []),
+			(merge, change) => merge.concat(change[section] || []),
 			[]
 		);
 		if (sectionChanges.length === 0) {

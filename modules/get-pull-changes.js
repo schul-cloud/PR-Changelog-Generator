@@ -12,6 +12,7 @@ const getPullChanges = async (pull_numbers) => {
 	core.debug("extract changes from pull request bodies...");
 	const changes = pullBodys.map(prParser);
 	core.debug("all changes from pull request bodies extracted.");
+	core.debug(JSON.stringify(changes, undefined, 2));
 	return changes;
 };
 

@@ -23,8 +23,6 @@ const main = async () => {
 	core.setOutput("changelog", changelog);
 };
 
-try {
-	main();
-} catch (error) {
-	core.setFailed(error.message);
-}
+main();
+
+module.exports = main;
