@@ -1884,6 +1884,14 @@ function paginatePlugin(octokit) {
 
 /***/ }),
 
+/***/ 164:
+/***/ (function(module) {
+
+module.exports = eval("require")("./modules/context");
+
+
+/***/ }),
+
 /***/ 168:
 /***/ (function(module) {
 
@@ -4170,6 +4178,7 @@ module.exports = class HttpError extends Error {
 
 const core = __webpack_require__(470);
 
+const { release_tag_name } = __webpack_require__(164);
 const getReleaseTags = __webpack_require__(965);
 
 const getReleaseCommitRange = async () => {

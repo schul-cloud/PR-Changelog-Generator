@@ -1,5 +1,6 @@
 const core = require("@actions/core");
 
+const { release_tag_name } = require("./modules/context");
 const getReleaseTags = require("./get-release-tags");
 
 const getReleaseCommitRange = async () => {
