@@ -9,7 +9,6 @@ jobs:
     name: "Upload Changelog"
     steps:
       - name: Upload PR Changelog
-        if: github.event.payload.pull_request.merged
         uses: schul-cloud/PR-Changelog-Sender@master
         with:
           mongo-uri: ${{ secrets.MONGO_URI }}
