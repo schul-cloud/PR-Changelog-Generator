@@ -2,7 +2,7 @@ const core = require("@actions/core");
 const github = require("@actions/github");
 const payload = github.context.payload;
 
-// TODO: verify existence of variables
+core.debug(`Payload: ${JSON.stringify(payload)}`);
 if (!payload.organization || !payload.organization.login) {
 	throw new Error("payload.organization.login is not defined");
 }

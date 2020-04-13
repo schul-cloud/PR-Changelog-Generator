@@ -8741,7 +8741,7 @@ const core = __webpack_require__(470);
 const github = __webpack_require__(469);
 const payload = github.context.payload;
 
-// TODO: verify existence of variables
+core.debug(`Payload: ${JSON.stringify(payload)}`);
 if (!payload.organization || !payload.organization.login) {
 	throw new Error("payload.organization.login is not defined");
 }
