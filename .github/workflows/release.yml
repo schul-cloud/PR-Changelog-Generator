@@ -1,7 +1,8 @@
 name: Release
 on:
   release:
-    types: [published]
+    # types: [published]
+    types: [created, edited, published]
 
 jobs:
   generate-changelog:
@@ -12,7 +13,6 @@ jobs:
         uses: schul-cloud/PR-Changelog-Generator@master
         with:
           token: ${{ secrets.SC_BOT_GITHUB_TOKEN }}
-          mongo-uri: ${{ secrets.MONGO_URI }}
-          mongo-db: "pr-changelog"
-          mongo-collection: "pr-changes"
           changelog-sections: '["Added", "Changed", "Deprecated", "Removed", "Fixed", "Security", "Uncategorized"]'
+        env:
+          ACTIONS_STEP_DEBUG: true
