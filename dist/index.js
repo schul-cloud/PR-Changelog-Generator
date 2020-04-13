@@ -8748,7 +8748,7 @@ if (!payload.organization || !payload.organization.login) {
 if (!payload.repository || !payload.repository.name) {
 	throw new Error("payload.repository.name is not defined");
 }
-if (!payload.tag_name || !payload.release.tag_name) {
+if (!payload.release || !payload.release.tag_name) {
 	throw new Error("payload.release.tag_name is not defined");
 }
 
