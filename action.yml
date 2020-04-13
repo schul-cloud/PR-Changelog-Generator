@@ -19,6 +19,13 @@ inputs:
   changelog-sections:
     description: "sections to include in the changelog"
     default: '["Added", "Changed", "Deprecated", "Removed", "Fixed", "Security"]'
+outputs:
+  release_tag:
+    description: "The tag of the current release"
+  pull_requests:
+    description: "A JSON.stringified list of all PRs that are in the current release"
+  changelog:
+    description: "The Markdown Formatted Changelog"
 runs:
   using: "node12"
   main: "dist/index.js"
