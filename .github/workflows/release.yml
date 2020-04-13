@@ -1,8 +1,7 @@
 name: Release
 on:
   release:
-    # types: [published]
-    types: [created, edited, published]
+    types: [published]
 
 jobs:
   generate-changelog:
@@ -25,7 +24,7 @@ jobs:
       - name: save changelog
         uses: finnp/create-file-action@master
         env:
-          FILE_NAME: "changelog/${{ steps.changelog.outputs.release_tag }}.md"
+          FILE_NAME: "CHANGELOG/${{ steps.changelog.outputs.release_tag }}.md"
           FILE_DATA: ${{ steps.changelog.outputs.changelog }}
       - name: commit changelog
         uses: stefanzweifel/git-auto-commit-action@v4.1.1
