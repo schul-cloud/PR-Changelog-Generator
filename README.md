@@ -24,13 +24,13 @@ The sections by that changes should be grouped for the release.
 name: Release
 on:
   release:
-    # types: [published]
-    types: [created, edited, published]
+    types: [published]
 
 jobs:
   generate-changelog:
     runs-on: ubuntu-latest
     name: Generate Changelog
+    id: changelog
     steps:
       - name: generate changelog
         uses: schul-cloud/PR-Changelog-Generator@master
@@ -39,4 +39,6 @@ jobs:
           changelog-sections: '["Added", "Changed", "Deprecated", "Removed", "Fixed", "Security", "Uncategorized"]'
         # env:
         #   ACTIONS_STEP_DEBUG: true
+      - name: echo changelog
+        run: echo -e '${{ steps.changelog.outputs.changelog }}'
 ```
