@@ -3,8 +3,8 @@ const core = require("@actions/core");
 const nock = require("nock");
 
 // hide logs, for a clean console
-jest.spyOn(core, "info").mockImplementation();
-jest.spyOn(core, "debug").mockImplementation();
+jest.spyOn(core, "info").mockImplementation(jest.fn());
+jest.spyOn(core, "debug").mockImplementation(jest.fn());
 
 const mockAPICall = (requestPath, mockDataPath) => {
 	nock("https://api.github.com")
@@ -37,7 +37,9 @@ describe("action", () => {
 			`/repos/schul-cloud/PR-Changelog-Generator/compare/3f699fb44c46f22cd3ce937a58263d2a468a6e92...74fc76826aefa45551b036524b9a1db05fb51f86`,
 			"../mock-data/compare"
 		);
-		const setOutputMock = jest.spyOn(core, "setOutput").mockImplementation();
+		const setOutputMock = jest
+			.spyOn(core, "setOutput")
+			.mockImplementation(jest.fn());
 		await run();
 		expect(setOutputMock.mock.calls).toMatchSnapshot();
 	});
