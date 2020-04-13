@@ -1,6 +1,6 @@
 {
 	"name": "pr-changelog-generator",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "A GitHub Action to generate a changelog based on a Changelog Section in Pull Requests.",
 	"main": "index.js",
 	"scripts": {
