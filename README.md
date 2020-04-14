@@ -14,9 +14,10 @@ A GitHub Action to generate a changelog based on a Changelog Section in Pull Req
 
 ### `changelog-sections`
 
-**Default:** `["Added", "Changed", "Deprecated", "Removed", "Fixed", "Security"]`
+**Default:** `'["Added", "Changed", "Deprecated", "Removed", "Fixed", "Security"]'`
 
 The sections by that changes should be grouped for the release.
+The value must be `JSON.stringify()`ed because of GitHub Actions restrictions.
 
 ## Outputs
 
@@ -26,7 +27,7 @@ The tag of the current release
 
 ### pull_requests
 
-A JSON.stringified list of all PRs that are in the current release
+A `JSON.stringify()`ed list of all PRs that are in the current release
 
 ### changelog
 
