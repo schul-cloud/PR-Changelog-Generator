@@ -1,10 +1,12 @@
 # Changelog
+
 ## v0.5.0
 
 ### Added
 
 - added support for non organization repos
 - added more linebreaks to changelog merge
+
 ## v0.4.2
 
 ### Added
