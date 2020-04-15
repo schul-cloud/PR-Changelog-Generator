@@ -527,7 +527,11 @@ module.exports = getPrBody;
 /***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
 
 const run = __webpack_require__(219);
-run();
+try {
+	run();
+} catch (error) {
+	core.setFailed(`Action failed with error ${error}`);
+}
 
 
 /***/ }),
