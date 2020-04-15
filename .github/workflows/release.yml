@@ -27,7 +27,7 @@ jobs:
           filepath: "./CHANGELOG.md"
           position-regexp: "# Changelog\r?\n\r?\n"
           alignment: "after"
-          content: "\r\n${{ steps.changelog.outputs.changelog }}"
+          content: "${{ steps.changelog.outputs.changelog }}\n\n"
       - name: commit changelog
         uses: stefanzweifel/git-auto-commit-action@v4.1.1
         with:
