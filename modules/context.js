@@ -3,18 +3,25 @@ const github = require("@actions/github");
 const payload = github.context.payload;
 
 core.debug(`Payload: ${JSON.stringify(payload)}`);
-if (!payload.organization || !payload.organization.login) {
-	throw new Error("payload.organization.login is not defined");
-}
 if (!payload.repository || !payload.repository.name) {
 	throw new Error("payload.repository.name is not defined");
+}
+if (
+	(!payload.organization || !payload.organization.login) &&
+	(!payload.repository.owner || !payload.repository.owner.login)
+) {
+	throw new Error(
+		"payload.organization.login and payload.repository.owner.login is not defined. One of them is required"
+	);
 }
 if (!payload.release || !payload.release.tag_name) {
 	throw new Error("payload.release.tag_name is not defined");
 }
 
 // payload data
-const owner = payload.organization.login;
+const owner = payload.organization
+	? payload.organization.login
+	: payload.repository.owner.login;
 const repo = payload.repository.name;
 const release_tag_name = payload.release.tag_name;
 
