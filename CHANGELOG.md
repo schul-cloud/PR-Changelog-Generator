@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.5.5
+
+### Changed
+
+- another try to fix newlines in output
+- provide output to inject script via env to preserve newlines
+- fail workflow on any error
+- add missing require("@actions/core")
+
+
 ## v0.5.0
 
 ### Added
