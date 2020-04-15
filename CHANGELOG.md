@@ -1,4 +1,18 @@
-# Changelog
+# Changelog## v0.4.2
+
+### Added
+
+- CHANGELOG.md file which contains all new changes
+- added advanced usage example
+
+### Changed
+
+- updated documentation to describe input types more precisely
+- renamed action step
+
+### Removed
+
+- removed CHANGELOG directory
 
 ## v0.4.1
 
