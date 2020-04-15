@@ -1,6 +1,6 @@
-const run = require("./modules/index");
+const core = require("@actions/core");
 try {
-	run();
+	require("./modules/index")();
 } catch (error) {
 	core.setFailed(`Action failed with error ${error}`);
 }
