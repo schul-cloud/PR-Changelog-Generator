@@ -1,5 +1,10 @@
 # Changelog
-## v0.5.1
+\n\n## v0.5.4
+
+### Changed
+
+- add missing require("@actions/core")
+\n\n\n\n## v0.5.1
 
 ### Changed
 
