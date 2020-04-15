@@ -14,8 +14,6 @@ jobs:
         with:
           token: ${{ secrets.SC_BOT_GITHUB_TOKEN }}
           changelog-sections: '["Added", "Changed", "Deprecated", "Removed", "Fixed", "Security", "Uncategorized"]'
-        env:
-          ACTIONS_STEP_DEBUG: true
       - name: clone repo
         uses: actions/checkout@v2
         with:
@@ -30,7 +28,6 @@ jobs:
           alignment: "after"
         env:
           CONTENT: "\n${{ steps.changelog.outputs.changelog }}"
-          ACTIONS_STEP_DEBUG: true
       - name: commit changelog
         uses: stefanzweifel/git-auto-commit-action@v4.1.1
         with:

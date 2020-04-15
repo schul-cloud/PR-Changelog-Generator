@@ -110,7 +110,8 @@ jobs:
           filepath: "./CHANGELOG.md"
           position-regexp: "# Changelog\r?\n"
           alignment: "after"
-          content: "\n${{ steps.changelog.outputs.changelog }}"
+        env:
+          CONTENT: "\n${{ steps.changelog.outputs.changelog }}"
       - name: commit changelog
         uses: stefanzweifel/git-auto-commit-action@v4.1.1
         with:
