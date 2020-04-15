@@ -21,7 +21,7 @@ jobs:
         with:
           token: ${{ secrets.SC_BOT_GITHUB_TOKEN }}
           ref: "master"
-      - name: inject text
+      - name: add changes to CHANGELOG.md
         uses: adrianjost/file-inject@master
         with:
           filepath: "./CHANGELOG.md"
