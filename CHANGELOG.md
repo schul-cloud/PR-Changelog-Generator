@@ -1,5 +1,9 @@
 # Changelog
+## v0.5.1
 
+### Changed
+
+- another try to fix newlines in output
 ## v0.5.0
 
 ### Added
