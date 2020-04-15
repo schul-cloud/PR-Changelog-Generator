@@ -1,4 +1,6 @@
-# Changelog## v0.4.2
+# Changelog
+
+## v0.4.2
 
 ### Added
 
