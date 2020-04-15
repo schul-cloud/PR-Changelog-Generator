@@ -1,3 +1,5 @@
+# Changelog
+
 ## v0.4.1
 
 ### Added
@@ -26,4 +28,3 @@
 ### Uncategorized
 
 The Action now works independently and no longer requires any other action or database.
-
