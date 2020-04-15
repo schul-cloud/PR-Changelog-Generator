@@ -526,9 +526,9 @@ module.exports = getPrBody;
 /***/ 104:
 /***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
 
-const run = __webpack_require__(219);
+const core = __webpack_require__(470);
 try {
-	run();
+	__webpack_require__(219)();
 } catch (error) {
 	core.setFailed(`Action failed with error ${error}`);
 }
