@@ -1,14 +1,5 @@
 # Changelog
-\n\n## v0.5.4
 
-### Changed
-
-- add missing require("@actions/core")
-\n\n\n\n## v0.5.1
-
-### Changed
-
-- another try to fix newlines in output
 ## v0.5.0
 
 ### Added

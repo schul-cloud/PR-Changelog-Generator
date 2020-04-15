@@ -29,7 +29,7 @@ jobs:
           regexp-flags: "i"
           alignment: "after"
         env:
-          CONTENT: "\\n\\n${{ steps.changelog.outputs.changelog }}\\n\\n\\n\\n"
+          CONTENT: "\n${{ steps.changelog.outputs.changelog }}\n"
           ACTIONS_STEP_DEBUG: true
       - name: commit changelog
         uses: stefanzweifel/git-auto-commit-action@v4.1.1
