@@ -21,8 +21,13 @@ jobs:
         with:
           token: ${{ secrets.SC_BOT_GITHUB_TOKEN }}
           ref: "master"
-      - name: save changelog
-        run: echo -e '${{ steps.changelog.outputs.changelog }}' > "CHANGELOG/${{ steps.changelog.outputs.release_tag }}.md"
+      - name: inject text
+        uses: adrianjost/file-inject@master
+        with:
+          filepath: "./CHANGELOG.md"
+          position-regexp: "# Changelog\r?\n"
+          alignment: "after"
+          content: "\n${{ steps.changelog.outputs.changelog }}"
       - name: commit changelog
         uses: stefanzweifel/git-auto-commit-action@v4.1.1
         with:
