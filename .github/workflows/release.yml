@@ -25,9 +25,12 @@ jobs:
         uses: adrianjost/file-inject@master
         with:
           filepath: "./CHANGELOG.md"
-          position-regexp: "# Changelog\r?\n\r?\n"
+          position-regexp: "# Changelog\\r?\\n"
+          regexp-flags: "i"
           alignment: "after"
-          content: "${{ steps.changelog.outputs.changelog }}\n\n"
+        env:
+          CONTENT: "\\n\\n${{ steps.changelog.outputs.changelog }}\\n\\n\\n\\n"
+          ACTIONS_STEP_DEBUG: true
       - name: commit changelog
         uses: stefanzweifel/git-auto-commit-action@v4.1.1
         with:
