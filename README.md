@@ -72,10 +72,47 @@ jobs:
       - name: generate changelog
         uses: schul-cloud/PR-Changelog-Generator@master
         with:
-          token: ${{ secrets.SC_BOT_GITHUB_TOKEN }}
+          token: ${{ secrets.SOME_GITHUB_TOKEN }}
           changelog-sections: '["Added", "Changed", "Deprecated", "Removed", "Fixed", "Security", "Uncategorized"]'
         # env:
         #   ACTIONS_STEP_DEBUG: true
       - name: echo changelog
         run: echo -e '${{ steps.changelog.outputs.changelog }}'
+```
+
+#### Advanced Usage with CHANGELOG.md file
+
+```yaml
+name: Release
+on:
+  release:
+    types: [published]
+
+jobs:
+  generate-changelog:
+    runs-on: ubuntu-latest
+    name: Generate Changelog
+    steps:
+      - name: generate changelog
+        uses: schul-cloud/PR-Changelog-Generator@master
+        id: changelog
+        with:
+          token: ${{ secrets.SOME_GITHUB_TOKEN }}
+          changelog-sections: '["Added", "Changed", "Deprecated", "Removed", "Fixed", "Security", "Uncategorized"]'
+      - name: clone repo
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.SOME_GITHUB_TOKEN }}
+          ref: "master"
+      - name: add changes to CHANGELOG.md
+        uses: adrianjost/file-inject@master
+        with:
+          filepath: "./CHANGELOG.md"
+          position-regexp: "# Changelog\r?\n"
+          alignment: "after"
+          content: "\n${{ steps.changelog.outputs.changelog }}"
+      - name: commit changelog
+        uses: stefanzweifel/git-auto-commit-action@v4.1.1
+        with:
+          commit_message: "add changelog ${{ steps.changelog.outputs.release_tag }}"
 ```
