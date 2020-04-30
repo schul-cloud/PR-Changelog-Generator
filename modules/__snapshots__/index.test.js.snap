@@ -3,15 +3,12 @@
 exports[`action can be executed 1`] = `
 Array [
   Array [
+    "release_tag",
+    "v0.0.4",
+  ],
+  Array [
     "pull_requests",
-    Array [
-      3,
-      4,
-      6,
-      7,
-      8,
-      9,
-    ],
+    "[3,4,6,7,8,9]",
   ],
   Array [
     "changelog",
